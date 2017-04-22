@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>env map</title>
+    <meta name="description" content="Env Map - A-Frame">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+
+        <a-assets>
+            <a-cubemap id="sky">
+                <img id="refl" src="refl.png">
+                <img id="refl" src="refl.png">
+                <img id="refl" src="refl.png">
+                <img id="refl" src="refl.png">
+                <img id="refl" src="refl.png">
+                <img id="refl" src="refl.png">
+        </a-assets>
+
+      <a-plane  position=" -2 -1 -4.1"  rotation="0 0 0" color="#AFF" env-map="#sky" roughness="0.0" width="4" height="4" ></a-plane>
+      <a-plane  position=" 2 2 -4"  rotation="0 0 0" color="#FFA" env-map="#sky" roughness="0.0" width="4" height="4" ></a-plane>
+      <a-sphere position=" 1 2 -3"  rotation="0 0 0" color="#FFF"    env-map="#sky" roughness="0.0"></a-sphere>
+      <a-box    position="-1 2 -3" rotation="0 0 0" color="#FFF"    env-map="#sky" roughness="0.0"></a-box>
+      <a-box    position="-1 0 -3" rotation="0 0 0" color="#FFF"    env-map="#sky" roughness="0.0"></a-box>
+      <a-sphere position=" 1 0 -3"  rotation="0 0 0" color="#FFF"    env-map="#sky" roughness="0.0"></a-sphere>
+
+      <a-light type="point" color="gray" position="0 10 0"></a-light>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>
+
+
+
+
+

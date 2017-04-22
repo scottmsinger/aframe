@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>cam fov debug</title>
+	<meta name="generator" content="MS Code" />
+</head>
+
+<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+
+<body>
+  <a-scene>
+    <!--  START BY ESTABLISHING THE ASSET CONTAINER -->
+    <a-assets>
+	
+	    <a-asset-item id="grid_cage_GEO" src="assets/grid_cage.obj"></a-asset-item>
+
+    </a-assets>
+    <!--  A SOLID BG -->
+    <a-sky color="#333"> </a-sky>
+    <a-entity id="grid_cage" obj-model="obj: #grid_cage_GEO" ></a-entity>
+
+    <!-- ADD A CAMERA AND CURSOR  -->
+    <!--<a-entity camera fov="100"></a-entity>-->
+    <a-camera fov="45" near="0.1" user-height="0"></a-camera>
+    <a-light type="point" color="#FF8" position="40 3 40" intensity="1.0"></a-light> 
+    <a-light type="point" color="#F8F" position="40 3 -40" intensity="1.0"></a-light> 
+<!-- CLOSE THE SCENE OUT -->
+</a-scene>
+
+</body>
+</html>
+
+
+
+
+
+
