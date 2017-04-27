@@ -15,12 +15,13 @@ AFRAME.registerComponent('nav-mesh', {
 
     schema: {
         target: {type: 'selector'},
-        marker: {type: 'selector'}
-        //numrays: {default: 1 }
+        wasd: {default: 'wasd-controls'},
+        y_offset: {default: 1.6}
     },
 
     init: function() {
-        console.log("init");
+        // console.log("init");
+
         // init object vars
         this.pos_aim = new THREE.Vector3();
         this.dir_aim = new THREE.Vector3();
@@ -33,16 +34,6 @@ AFRAME.registerComponent('nav-mesh', {
         this.speed = 0;
         this.target_ready = false;
 
-        //console.log("this.el");
-        // console.log(this.el);
-
-        // console.log("this.el.components[wasd-controls]");
-        // console.log(this.el.components["wasd-controls"]);
-
-
-        // initialize target mesh
-        // console.log("this.target");
-        // console.log(this.data.target.getObject3D('mesh'));
         is_ready = false;
         const mesh = this.data.target.getObject3D('mesh');
         if(!mesh){
@@ -52,49 +43,18 @@ AFRAME.registerComponent('nav-mesh', {
         }
         else {
             if (!mesh.children.length) {
-                // console.log(this.data.target.id+" mesh not populated yet");
                 this.el.addEventListener('object3dset', this.init.bind(this));
             }
             else {
-                // console.log("There was a mesh for "+this.el.id+"\n\tit looks like:");
-                // console.log(mesh);
-                // console.log("");
                 is_ready = true;
             }
         }
         if(is_ready){
-            // console.log("this.target");
-            // console.log(this.data.target);
-
-            // console.log("this.target.object3D");
-            // console.log(this.data.target.object3D);
-
-            // console.log("this.target.object3D.children[0]");
-            // console.log(this.data.target.object3D.children[0]);
-
-//            for(i=0; i< el_loc.object3D.children[0].children.length; i++){
-//                var uv1 = new Float32Array( el_loc.object3D.children[0].children[i].geometry.attributes.uv.array );
-//                el_loc.object3D.children[0].children[i].geometry.addAttribute(newname, new THREE.BufferAttribute(uv1, 2));
-//            }
             this.target_ready = true;
             is_ready = false;
         }
 
-
-        // debug marker object
-        // console.log("this.marker");
-        // console.log(this.data.marker);
-
-        // console.log("this.marker.object3D");
-        // console.log(this.data.marker.object3D);
-        
-
-        // init ray caster
         this.ray = new THREE.Raycaster();
-        // console.log("this.ray");
-        // console.log(this.ray);
-               
-
 
     },
 
@@ -115,7 +75,8 @@ AFRAME.registerComponent('nav-mesh', {
 
         // get the velocity direction from the wasd-controls
         // need to base this on a component attribute
-        this.dir = this.el.components["wasd-controls"].velocity.clone();
+        // this.dir = this.el.components["sms_wasd-controls"].velocity.clone();
+        this.dir = this.el.components[this.data.wasd].velocity.clone();
         //console.log("velocity");
         //console.log(this.dir);
         // flatten it in Y
@@ -161,7 +122,7 @@ AFRAME.registerComponent('nav-mesh', {
                     //this.el.object3D.position.set(this.pos_marker.x, this.pos_marker.y + 1.6, this.pos_marker.z);
                     this.el.setAttribute('position', {
                         x: this.pos_marker.x,
-                        y: this.pos_marker.y + 1.6,
+                        y: this.pos_marker.y + this.data.y_offset,
                         z: this.pos_marker.z
                     });
                     //this.el.components["wasd-controls"].acceleration = 1.0;
@@ -169,40 +130,17 @@ AFRAME.registerComponent('nav-mesh', {
                 }
                 else{
                     //console.log("hit on vel cast but not on vertical cast");
-                    //this.el.components["wasd-controls"].acceleration = 1.0;
-                    //console.log(this.el.components["wasd-controls"].acceleration)
                 }
             }
             else{
                 // there isn't a hit
-                //console.log("intersects[0] is undefined");
-                //console.log("Off Nav Mesh")
-                // this.el.object3D.position.set(this.pos_marker.x, this.pos_marker.y + 1.6, this.pos_marker.z);
                 this.el.setAttribute('position', {
                         x: this.pos_marker.x,
-                        y: this.pos_marker.y + 1.6,
+                        y: this.pos_marker.y + this.data.y_offset,
                         z: this.pos_marker.z
                 });
-                //this.el.components["wasd-controls"].acceleration = 0.0;
-                //console.log(this.el.components["wasd-controls"].acceleration)
             }
         }
 
-        //console.log( this.el.object3D.localToWorld ( new THREE.Vector3(0.0, 0.0, 1.0)) );
-        //var pos_curr = this.el.object3D.position;
-        //pos_aim = 
-        //console.log(currentPosition);
-
-        // cast a ray v target mesh @ base pos + dir * vel
-
-        // if not hit stop
-
-        // else nothing
-
-//        this.el.setAttribute('position', {
-//            x: currentPosition.x + directionVec3.x,
-//            y: currentPosition.y + directionVec3.y,
-//            z: currentPosition.z + directionVec3.z
-//        });
     }
 });
