@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>env map</title>
+        <meta name="description" content="Env Map - A-Frame">
+        <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+        <script src="nav_mesh.js"></script>
+    </head>
+    <body>
+        <a-scene>
+
+            <a-assets>
+                <a-asset-item id="helix_GEO"    src="helix.obj"></a-asset-item>
+                <a-asset-item id="navmesh_GEO"    src="navmesh_geo.obj"></a-asset-item>
+            </a-assets>
+
+            <a-light type="point" color="gray" position="0 10 0"></a-light>
+            <a-sky color="#ECECEC"></a-sky>
+
+	<!--<a-entity id="helix" obj-model="obj: #helix_GEO "></a-entity>-->
+    <a-entity id="navmesh" obj-model="obj: #navmesh_GEO "></a-entity>
+
+            <a-sphere id="marker" color="#69C" position="0 0 -5"></a-sphere>
+            <a-plane id="ground" height="10" width="10" color="#C96" 
+                position="0 -1 0" rotation="-70 0 0"></a-plane>
+
+            <!-- ADD A CAMERA AND CURSOR  -->
+            <a-camera fov="80" near="0.1" user-height="1.6" 
+                  look-controls wasd-controls="acceleration: 20.0"
+                  nav-mesh="target: #navmesh; marker: #marker" >
+            </a-camera>
+    
+        </a-scene>
+    </body>
+</html>
+
+
+
+
