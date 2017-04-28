@@ -1,3 +1,68 @@
 {
-    
+    "web":{
+        "node_type": "aframe_scene",
+        "ver_curr": 0,
+        "ver_pub": 0,
+
+        "js_depends": {
+            "js_0":["~/dev/aframe/components/obj_dup_uv/obj_dup_uv.js", "web/js/thirdparty/aframe/obj_dup_uv.js"],
+            "js_1":["~/dev/aframe/components/nav_mesh/nav_mesh.js", "web/js/thirdparty/aframe/nav_mesh.js"]
+        }
+
+    },
+
+    // blank boilerplate for A-Frame "entity"
+    "entity01": {
+        "node_type": "aframe_entity",
+        "name": "entity01",
+        "color": [0.25, 0.25, 0.25],
+        "diffmap": "image/render/${this.name}/${this.name}_diff.jpg",
+        "lm_intensity": 8.0,
+        "lightmap": "image/render/${this.name}/${this.name}_lm.jpg",
+        "metalness": 0.0,
+        "metalmap": "image/render/${name}/${name}_metal.jpg",
+        "envmap": null,
+        "envmap_intensity": 0.0,
+        "roughness": 1.0,
+        "roughmap": "image/render/${name}/${name}_rough.jpg" 
+    },
+
+    "asset01":{
+        "node_type": "aframe_asset",
+        "name": "asset01",
+        "file_src": "image/render/${this.name}/${this.name}_[diff].jpg",
+        "file_web": "web/assets/image/${this.name}_[diff].jpg"
+    },
+
+    // alcove 
+
+    "alcove_geo":{
+        "node_type": "aframe_asset:geo:obj",
+        "name": "alcove", 
+        "file_src": "models/${this.name}/${this.name}_geo.jpg",
+        "file_web": "web/assets/model/${this.name}_geo.jpg"
+    },
+
+    "alcove_diff":{
+        "node_type": "aframe_asset:image",
+        "name": "alcove", 
+        "file_src": "image/render/${this.name}/${this.name}_diff.jpg",
+        "file_web": "web/assets/image/${this.name}_diff.jpg"
+    },
+
+    "alcove_lm":{
+        "node_type": "aframe_asset:image",
+        "name": "alcove", 
+        "file_src": "image/render/${this.name}/${this.name}_lm.jpg",
+        "file_web": "web/assets/image/${this.name}_lm.jpg"
+    },
+
+    "alcove_rough":{
+        "node_type": "aframe_asset:image",
+        "name": "alcove", 
+        "file_src": "image/render/${this.name}/${this.name}_rough.jpg",
+        "file_web": "web/assets/image/${this.name}_rough.jpg"
+    },
+
+    "end": 0
 }
