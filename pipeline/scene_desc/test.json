@@ -1,0 +1,58 @@
+{
+    // CLASSES
+    "car": {
+        "type": "class",
+        "name": "car",
+        "make": "str",
+        "model": "str",
+        "year": 2000,
+        "color": "white",
+        "tires": { 
+            "type": ["obj", "tire"]
+        }
+    },
+
+    "tire": {
+        "type": "class",
+        "name": "tire",
+        "size": 17,
+        "model": "S123XX671"
+    },
+
+    // INSTANCES
+    "my_car": {
+        "class": "car",
+        "name": "my_car",
+        "make": "toyota",
+        "model": "camry",
+        "color": "beige",
+        "tires": "boring_tires"
+
+    },
+
+    "her_car": {
+        "class": "car",
+        "name": "my_car",
+        "make": "bmw",
+        "model": "328ci",
+        "color": "blue gray",
+        "tires": "sport_tires"
+
+    },
+
+    "sport_tire": {
+        "class": "tire",
+        "name": "sport_tire",
+        "size": 17,
+        "model": "XXXXYYYYZZZZ"
+    },
+
+    "boring_tire": {
+        "class": "tire",
+        "name": "boring_tire",
+        "size": 15,
+        "model": "ZZZZZZZZZ"
+    },
+
+    "eof": null
+}
