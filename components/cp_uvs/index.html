@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>cp_uvs test</title>
+	<meta name="generator" content="MS Code" />
+</head>
+
+<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+<script src="cp_uvs.js"></script>
+<script src="mesh_standard.js"></script>
+
+<body>
+  
+    <a-scene>
+    <!--  START BY ESTABLISHING THE ASSET CONTAINER -->
+		<a-assets>
+			<img id="uv2test_LM" src= "uv2test.1001.jpg">
+			<img id="crate_DIFF" src= "crate.jpg">
+
+            <a-asset-item id="uvbox_uv_GEO"  src="uvbox_uv.obj"></a-asset-item>
+            <a-asset-item id="uvbox_uv2_GEO" src="uvbox_uv2.obj"></a-asset-item>
+
+		</a-assets>
+
+
+
+	    <a-entity id="uvbox_uv" obj-model="obj: #uvbox_uv_GEO" 
+		    material="shader: mesh_standard; map: #crate_DIFF" position="-1.25 0 -2" 
+	    ></a-entity>
+
+	    <a-entity id="uvbox_uv2" obj-model="obj: #uvbox_uv2_GEO" 
+		    material="shader: mesh_standard; map: #uv2test_LM" position="1.25 0 -2" 
+	    ></a-entity>
+
+	    <a-entity id="uvbox_uv" obj-model="obj: #uvbox_uv_GEO" obj-cp-uvs="cp_obj: #uvbox_uv2"
+		    material="shader: mesh_standard; map: #crate_DIFF; lightMap: #uv2test_LM; lightMapIntensity: 2.0" 
+            position="0 0 -3.5" rotation="0 45 0" 
+	    ></a-entity>
+
+        <!--  A SOLID BG -->
+        <a-sky color="#333"> </a-sky>
+
+        <!--  CAMERA  -->
+    	<a-entity camera id="scene_cam" look-controls wasd-controls="acceleration: 6.0" position="0 1.5 0"  fov="40">
+            <a-cursor color="red">
+      	</a-entity>
+
+        <a-light type="point" color="#777" position="0 3 0" intensity="2"></a-light> 
+
+    </a-scene>
+
+
+</body>
+
